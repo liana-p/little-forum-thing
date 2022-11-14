@@ -71,6 +71,7 @@ export interface Database {
           created_by: string
           title: string
           body: string
+          categories: string[] | null
         }
         Insert: {
           id?: string
@@ -78,6 +79,7 @@ export interface Database {
           created_by: string
           title: string
           body: string
+          categories?: string[] | null
         }
         Update: {
           id?: string
@@ -85,6 +87,7 @@ export interface Database {
           created_by?: string
           title?: string
           body?: string
+          categories?: string[] | null
         }
       }
     }

@@ -11,7 +11,13 @@
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^0.2.4",
-    "nuxt": "3.0.0-rc.13",
-    "supabase": "^1.12.2"
+    "naive-ui": "^2.33.5",
+    "nuxt": "3.0.0-rc.13"
+  },
+  "dependencies": {
+    "primeflex": "^3.3.0",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.18.1",
+    "vue": "^3.2.45"
   }
 }

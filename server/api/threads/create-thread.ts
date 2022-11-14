@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
       throw new Error(`Post creation failed ${result.error?.message}`);
     }
     return {
-      postId: result.data[0].id,
+      id: result.data[0].id,
     };
   } catch (error) {
     throw new Error(`You must be signed in to create a thread. [${error}]`);
