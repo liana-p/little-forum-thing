@@ -10,10 +10,11 @@ export default defineEventHandler(async (event) => {
       throw new Error("No logged in user");
     }
     const body = await readBody(event);
-    const thread: DbThreadCreate = {
+    const thread: Database["public"]["Tables"]["threads"]["Insert"] = {
       created_by: user.id,
       title: body.title,
       body: body.body,
+      categories: body.categories,
     };
     const result = await client
       .from("threads")

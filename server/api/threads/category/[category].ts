@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const result = await client
     .from("threads")
     .select("*")
-    .contains("categories", [event.context.params.slug]);
+    .contains("categories", [event.context.params.category]);
   if (!result.data) {
     throw new Error(`Post creation failed ${result.error?.message}`);
   }

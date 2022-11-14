@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   modules: ["@nuxtjs/supabase"],
   css: [
-    "primevue/resources/themes/saga-blue/theme.css",
+    "primevue/resources/themes/md-dark-deeppurple/theme.css",
     "primevue/resources/primevue.css",
     "primeicons/primeicons.css",
     "primeflex/primeflex.css",

@@ -10,12 +10,18 @@
     </nuxt-link>
   </div>
   <DataTable :value="tableData" v-if="threads && threads.length > 0">
-    <Column field="title" header="Title"></Column>
+    <Column field="title" header="Title">
+      <template #body="slotProps">
+        <nuxt-link :to="slotProps.data.link">
+          {{ slotProps.data.title }}
+        </nuxt-link>
+      </template>
+    </Column>
     <Column field="author" header="Author"></Column>
     <Column field="replies" header="Replies"></Column>
     <Column field="date" header="Date"></Column>
   </DataTable>
-  <h2 v-else>There are no threads</h2>
+  <h2 v-else>There are no threads here</h2>
 </template>
 <script setup lang="ts">
 import Breadcrumb from "primevue/breadcrumb";
@@ -38,7 +44,7 @@ const section =
   config.sections[0];
 
 const { data: threads } = await useFetch(
-  `/api/threads/category-${category.slug}`
+  `/api/threads/category/${category.slug}`
 );
 
 const home = {
@@ -63,6 +69,7 @@ const tableData =
       author: thread.created_by,
       replies: 0,
       date: thread.created_at,
+      link: `/thread/${thread.id}`,
     };
   }) ?? [];
 </script>
