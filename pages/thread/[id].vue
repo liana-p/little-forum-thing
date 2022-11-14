@@ -2,11 +2,15 @@
   <Breadcrumb :home="home" :model="breadcrumbItems" />
   <h2>{{ thread.title }}</h2>
   <h4>Posted by {{ thread.created_by }} at {{ thread.created_at }}</h4>
-  <p>{{ thread.body }}</p>
+  <div>
+    <Markdown :source="thread.body" />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import Breadcrumb from "primevue/breadcrumb";
+import Markdown from "vue3-markdown-it";
+
 const config = useConfig();
 const route = useRoute();
 const threadId = ref(route.params.id);

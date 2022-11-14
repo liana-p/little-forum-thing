@@ -16,17 +16,24 @@
           </span>
         </div>
         <div class="field col-12">
-          <span class="p-float-label">
-            <textarea
-              id="threadBody"
-              class="w-full"
-              rows="10"
-              :autoResize="true"
-              v-model="threadBody"
-              required
-            ></textarea>
-            <label for="threadBody">Thread body (markdown supported)</label>
-          </span>
+          <TabView>
+            <TabPanel header="Edit">
+              <span class="p-float-label">
+                <textarea
+                  id="threadBody"
+                  class="w-full"
+                  rows="10"
+                  :autoResize="true"
+                  v-model="threadBody"
+                  required
+                ></textarea>
+                <label for="threadBody">Thread body (markdown supported)</label>
+              </span>
+            </TabPanel>
+            <TabPanel header="Preview">
+              <Markdown :source="threadBody" />
+            </TabPanel>
+          </TabView>
         </div>
         <div class="field col-12">
           <span class="p-float-label">
@@ -59,6 +66,9 @@
 import InputText from "primevue/inputtext";
 import MultiSelect from "primevue/multiselect";
 import Button from "primevue/button";
+import Markdown from "vue3-markdown-it";
+import TabView from "primevue/tabview";
+import TabPanel from "primevue/tabpanel";
 
 const supabase = useSupabaseClient();
 
