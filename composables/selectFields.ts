@@ -17,10 +17,9 @@ export const selectThreadFields = `
   categories
   ` as const;
 
-export const selectReplyFields = `
-    id,
+export const selectReplyFields = `id,
     created_at,
     updated_at,
     created_by (${selectUserFields}),
     body,
-  ` as const;
+    thread_id` as const;

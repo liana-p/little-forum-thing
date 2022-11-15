@@ -12,12 +12,9 @@ export default defineEventHandler(async (event) => {
   const result = await client
     .from("replies")
     .select(selectReplyFields)
-    .eq("post", query.threadId);
+    .eq("thread_id", query.threadId);
   if (!result.data) {
     throw new Error(`No data found ${result.error?.message}`);
-  }
-  if (result.data.length === 0) {
-    throw new Error(`Post not found`);
   }
   return result.data;
 });

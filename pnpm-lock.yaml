@@ -2,12 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   '@nuxtjs/supabase': ^0.2.4
+  '@types/uuid': ^8.3.4
   naive-ui: ^2.33.5
   nuxt: 3.0.0-rc.13
   primeflex: ^3.3.0
   primeicons: ^6.0.1
   primevue: ^3.18.1
   supabase: ^1.13.0
+  uuid: ^9.0.0
   vue: ^3.2.45
   vue3-markdown-it: ^1.0.10
 
@@ -15,11 +17,13 @@ dependencies:
   primeflex: 3.3.0
   primeicons: 6.0.1
   primevue: 3.18.1_5f3kdig7wnjzidee4jtphf73cq
+  uuid: 9.0.0
   vue: 3.2.45
   vue3-markdown-it: 1.0.10
 
 devDependencies:
   '@nuxtjs/supabase': 0.2.4
+  '@types/uuid': 8.3.4
   naive-ui: 2.33.5_vue@3.2.45
   nuxt: 3.0.0-rc.13
   supabase: 1.13.0
@@ -882,6 +886,10 @@ packages:
 
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+    dev: true
+
+  /@types/uuid/8.3.4:
+    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@unhead/dom/0.6.6:
@@ -4671,6 +4679,11 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
 
   /vdirs/0.1.8_vue@3.2.45:
     resolution: {integrity: sha512-H9V1zGRLQZg9b+GdMk8MXDN2Lva0zx72MPahDKc30v+DtwKjfyOSXWRIX4t2mhDubM1H09gPhWeth/BJWPHGUw==}

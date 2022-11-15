@@ -1,5 +1,6 @@
 import { serverSupabaseClient, serverSupabaseUser } from "#supabase/server";
 import { Database } from "~~/lib/database.types";
+import { selectReplyFields } from "~~/composables/selectFields";
 
 export default defineEventHandler(async (event) => {
   const client = serverSupabaseClient<Database>(event);
@@ -14,7 +15,12 @@ export default defineEventHandler(async (event) => {
       thread_id: event.context.params.threadId,
       body: body.body,
     };
-    const result = await client.from("replies").insert(reply).select();
+    console.log(reply);
+    const result = await client
+      .from("replies")
+      .insert(reply)
+      .select(selectReplyFields);
+    console.log(result);
     if (!result.data) {
       throw new Error(`Post creation failed ${result.error?.message}`);
     }

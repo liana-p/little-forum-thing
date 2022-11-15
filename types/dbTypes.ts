@@ -7,3 +7,7 @@ export type DbThreadRow = Database["public"]["Tables"]["threads"]["Row"];
 export type DbThreadJoined = Omit<DbThreadRow, "created_by"> & {
   created_by: DbProfileRow;
 };
+export type DbReplyJoined = Omit<DbReplyRow, "created_by"> & {
+  created_by: DbProfileRow;
+};
+export type Post = DbThreadJoined | DbReplyJoined;

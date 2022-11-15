@@ -16,24 +16,12 @@
           </span>
         </div>
         <div class="field col-12">
-          <TabView>
-            <TabPanel header="Edit">
-              <span class="p-float-label">
-                <textarea
-                  id="threadBody"
-                  class="w-full"
-                  rows="10"
-                  :autoResize="true"
-                  v-model="threadBody"
-                  required
-                ></textarea>
-                <label for="threadBody">Thread body (markdown supported)</label>
-              </span>
-            </TabPanel>
-            <TabPanel header="Preview">
-              <Markdown :source="threadBody" />
-            </TabPanel>
-          </TabView>
+          <MarkdownEditor
+            id="threadbody"
+            v-model:threadContent="threadBody"
+            label="Thread body (markdown supported)"
+            value=""
+          />
         </div>
         <div class="field col-12">
           <span class="p-float-label">

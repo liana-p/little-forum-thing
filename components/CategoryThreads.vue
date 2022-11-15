@@ -23,7 +23,11 @@
       </template>
     </Column>
     <Column field="replies" header="Replies"></Column>
-    <Column field="date" header="Date"></Column>
+    <Column field="date" header="Date">
+      <template #body="slotProps">
+        {{ new Date(slotProps.data.date).toLocaleString() }}
+      </template>
+    </Column>
   </DataTable>
   <h2 v-else>There are no threads here</h2>
 </template>

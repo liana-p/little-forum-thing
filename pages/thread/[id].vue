@@ -1,28 +1,34 @@
 <template>
   <Breadcrumb :home="home" :model="breadcrumbItems" />
-  <h2>{{ thread.title }}</h2>
-  <h4>
-    Posted by <InlineProfile :user="thread.created_by" /> at
-    {{ thread.created_at }}
-  </h4>
-  <div>
-    <Markdown :source="thread.body" />
-  </div>
+  <Post :post="thread" />
+  <Post :post="reply" v-for="reply in replies" :key="reply.id" />
+  <ThreadReplyButton :thread="thread" @new_reply="addNewReply" />
 </template>
 
 <script lang="ts" setup>
 import Breadcrumb from "primevue/breadcrumb";
 import Markdown from "vue3-markdown-it";
-import { DbThreadJoined } from "~~/types/dbTypes";
+import { DbReplyJoined, DbThreadJoined } from "~~/types/dbTypes";
 
 const config = useConfig();
 const route = useRoute();
 const threadId = ref(route.params.id);
 const result = await useFetch(`/api/thread/${route.params.id}/`);
 let thread = ref(result.data.value! as DbThreadJoined);
+const replying = false;
 
 if (!thread.value) {
   thread.value = defaultThread() as any;
+}
+const fetchReplies = await useFetch(`/api/replies/thread-replies`, {
+  method: "get",
+  query: {
+    threadId: threadId.value,
+  },
+}).data.value;
+const replies = ref(fetchReplies as DbReplyJoined[]);
+if (!replies.value) {
+  replies.value = [];
 }
 const category =
   config.categories.find((c) => c.slug === thread.value.categories![0]) ??
@@ -49,4 +55,8 @@ const breadcrumbItems = [
     to: `/thread/${thread.value!.id}`,
   },
 ];
+
+function addNewReply(newReply: DbReplyJoined) {
+  replies.value.push(newReply);
+}
 </script>
