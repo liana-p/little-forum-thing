@@ -12,30 +12,30 @@ export interface Database {
       profiles: {
         Row: {
           id: string
-          updated_at: string | null
-          username: string | null
+          updated_at: string
+          username: string
           description: string | null
-          display_name: string | null
+          display_name: string
           avatar_url: string | null
           website: string | null
           signature: string | null
         }
         Insert: {
           id: string
-          updated_at?: string | null
-          username?: string | null
+          updated_at?: string
+          username: string
           description?: string | null
-          display_name?: string | null
+          display_name: string
           avatar_url?: string | null
           website?: string | null
           signature?: string | null
         }
         Update: {
           id?: string
-          updated_at?: string | null
-          username?: string | null
+          updated_at?: string
+          username?: string
           description?: string | null
-          display_name?: string | null
+          display_name?: string
           avatar_url?: string | null
           website?: string | null
           signature?: string | null
@@ -47,21 +47,24 @@ export interface Database {
           created_at: string | null
           created_by: string
           body: string
-          post: string
+          thread_id: string
+          updated_at: string | null
         }
         Insert: {
           id?: string
           created_at?: string | null
           created_by: string
           body: string
-          post: string
+          thread_id: string
+          updated_at?: string | null
         }
         Update: {
           id?: string
           created_at?: string | null
           created_by?: string
           body?: string
-          post?: string
+          thread_id?: string
+          updated_at?: string | null
         }
       }
       threads: {
@@ -72,6 +75,7 @@ export interface Database {
           title: string
           body: string
           categories: string[] | null
+          updated_at: string | null
         }
         Insert: {
           id?: string
@@ -80,6 +84,7 @@ export interface Database {
           title: string
           body: string
           categories?: string[] | null
+          updated_at?: string | null
         }
         Update: {
           id?: string
@@ -88,6 +93,7 @@ export interface Database {
           title?: string
           body?: string
           categories?: string[] | null
+          updated_at?: string | null
         }
       }
     }

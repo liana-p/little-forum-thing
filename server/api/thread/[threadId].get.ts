@@ -1,5 +1,8 @@
 import { serverSupabaseClient, serverSupabaseUser } from "#supabase/server";
-import { selectThreadFields } from "~~/composables/selectFields";
+import {
+  selectThreadFields,
+  selectUserFields,
+} from "~~/composables/selectFields";
 import { Database } from "~~/lib/database.types";
 
 export default defineEventHandler(async (event) => {
@@ -7,9 +10,12 @@ export default defineEventHandler(async (event) => {
   const result = await client
     .from("threads")
     .select(selectThreadFields)
-    .contains("categories", [event.context.params.category]);
+    .eq("id", event.context.params.threadId);
   if (!result.data) {
-    throw new Error(`Post creation failed ${result.error?.message}`);
+    throw new Error(`No data found ${result.error?.message}`);
   }
-  return result.data;
+  if (result.data.length === 0) {
+    throw new Error(`Post not found`);
+  }
+  return result.data[0];
 });

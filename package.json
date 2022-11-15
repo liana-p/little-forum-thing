@@ -12,7 +12,8 @@
   "devDependencies": {
     "@nuxtjs/supabase": "^0.2.4",
     "naive-ui": "^2.33.5",
-    "nuxt": "3.0.0-rc.13"
+    "nuxt": "3.0.0-rc.13",
+    "supabase": "^1.13.0"
   },
   "dependencies": {
     "primeflex": "^3.3.0",

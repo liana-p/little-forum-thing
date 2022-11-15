@@ -17,7 +17,11 @@
         </nuxt-link>
       </template>
     </Column>
-    <Column field="author" header="Author"></Column>
+    <Column field="author" header="Author">
+      <template #body="slotProps">
+        <InlineProfile :user="slotProps.data.author" />
+      </template>
+    </Column>
     <Column field="replies" header="Replies"></Column>
     <Column field="date" header="Date"></Column>
   </DataTable>

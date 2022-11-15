@@ -1,17 +1,9 @@
-export interface DbThread {
-  id: string;
-  created_at: Date;
-  created_by: string;
-  title: string;
-  body: string;
-}
-export type DbThreadCreate = Omit<DbThread, "id" | "created_at">;
+import { Database } from "~~/lib/database.types";
 
-export interface DbReply {
-  id: string;
-  created_at: Date;
-  created_by: string;
-  post: string;
-  body: string;
-}
-export type DbReplyCreate = Omit<DbReply, "id" | "created_at">;
+export type DbProfileRow = Database["public"]["Tables"]["profiles"]["Row"];
+export type DbReplyRow = Database["public"]["Tables"]["replies"]["Row"];
+export type DbThreadRow = Database["public"]["Tables"]["threads"]["Row"];
+
+export type DbThreadJoined = Omit<DbThreadRow, "created_by"> & {
+  created_by: DbProfileRow;
+};

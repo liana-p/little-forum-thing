@@ -9,22 +9,16 @@ export default defineEventHandler(async (event) => {
       throw new Error("No logged in user");
     }
     const body = await readBody(event);
-    const thread: Database["public"]["Tables"]["threads"]["Insert"] = {
+    const reply: Database["public"]["Tables"]["replies"]["Insert"] = {
       created_by: user.id,
-      title: body.title,
+      thread_id: event.context.params.threadId,
       body: body.body,
-      categories: body.categories,
     };
-    const result = await client
-      .from("threads")
-      .insert(thread as any)
-      .select();
+    const result = await client.from("replies").insert(reply).select();
     if (!result.data) {
       throw new Error(`Post creation failed ${result.error?.message}`);
     }
-    return {
-      id: result.data[0].id,
-    };
+    return result.data[0];
   } catch (error) {
     throw new Error(`You must be signed in to create a thread. [${error}]`);
   }
